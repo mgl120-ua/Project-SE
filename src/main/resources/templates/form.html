@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Escenario</title>
+</head>
+<body>
+<form action="#" th:action="@{/submit}" th:object="${scenario}" method="post">
+    Descripción del Escenario: <input type="text" th:field="*{scenarioDescription}" /><br/>
+    Actores: <input type="text" th:field="*{actors}" /><br/>
+    Actores del Sistema: <input type="text" th:field="*{systemActors}" /><br/>
+    Pasos: <textarea th:field="*{steps}"></textarea><br/>
+    <button type="submit">Enviar</button>
+</form>
+</body>
+</html>
