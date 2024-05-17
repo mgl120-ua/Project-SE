@@ -2,7 +2,7 @@
 
 # Proyect SE
 
-Repositorio para el laboratorio de CI con GitHub Actions
+Repository from the proyect of SE
 
 ## Description 
 
