@@ -6,7 +6,7 @@ Repository from the proyect of SE
 
 ## Description 
 
-In .
+The project consists of a Spring Boot application that provides a REST API for text transformation and scenario quality checking. The main functionality includes transforming text into different formats and validating scenario steps according to specific criteria.
 
 ## Resources
 https://www.adictosaltrabajo.com/2020/10/28/introduccion-a-github-actions-sintaxis-basica/
