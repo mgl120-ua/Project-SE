@@ -1,0 +1,13 @@
+1. Librarian selects options to add a new book item
+2. A form is displayed.
+3. Librarian provides the details of the book.
+4. IF: Librarian wishes to add copies of the book
+5. Librarian chooses to define instances
+6. System presents defined instances
+7. FOR EACH: instance:
+8. Librarian chooses to add an instance
+9. System prompts to enter the instance details
+10. Librarian enters the instance details and confirms them.
+11. System informs about the correct addition of an instance and presents the updated list of instances.
+12. Librarian confirms book addition.
+13. System informs about the correct addition of the book.

@@ -63,7 +63,7 @@ public class ScenarioQualityChecker {
         return totalSteps;
     }
 
-    public int countControlSteps() {
+    public int countConditionalSteps() {
         int controlSteps = 0;
         for (String step : steps) {
             if (step.contains("IF") || step.contains("ELSE") || step.contains("FOR EACH")) {
@@ -90,5 +90,42 @@ public class ScenarioQualityChecker {
             }
         }
         return incorrectSteps;
+    }
+
+    public List<String> validateStepsStartWithActor() {
+        List<String> invalidSteps = new ArrayList<>();
+        List<String> validPrefixes = Arrays.asList(actor, systemActor); // Ensure ":" to denote actor action
+        List<String> controlKeywords = Arrays.asList("IF:", "ELSE:", "FOR EACH:"); // Keywords to ignore
+
+        for (String step : steps) {
+            // Check if step starts with a control keyword or an actor, skip if true
+            boolean startsWithControlKeyword = controlKeywords.stream().anyMatch(step::startsWith);
+            boolean startsWithActor = validPrefixes.stream().anyMatch(step::startsWith);
+
+            if (!startsWithControlKeyword && !startsWithActor) {
+                // If it does not start with a control keyword or an actor name, then add to invalidSteps
+                invalidSteps.add(step);
+            }
+        }
+        return invalidSteps;
+    }
+
+    public String formatStepsForDocumentation() {
+        StringBuilder formattedSteps = new StringBuilder();
+        formatStepsRecursive(this.steps, "", 1, formattedSteps);
+        return formattedSteps.toString();
+    }
+
+    private void formatStepsRecursive(List<String> steps, String prefix, int level, StringBuilder formattedSteps) {
+        int stepNumber = 1;
+        for (String step : steps) {
+            String currentPrefix = prefix.isEmpty() ? Integer.toString(stepNumber) : prefix + "." + stepNumber;
+            formattedSteps.append(currentPrefix).append(". ").append(step).append("\n");
+
+            // Asumir que los subpasos se pasan como parte de la lista de pasos de alguna manera
+            // Aquí, eliminaremos el código que añade subpasos ficticios
+            // Solo incrementamos el número de paso si no es un subpaso
+            stepNumber++;
+        }
     }
 }
