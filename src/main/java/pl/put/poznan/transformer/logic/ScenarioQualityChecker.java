@@ -97,7 +97,7 @@ public class ScenarioQualityChecker {
         List<String> validPrefixes = Arrays.asList(actor, systemActor); // Ensure ":" to denote actor action
         List<String> controlKeywords = Arrays.asList("IF:", "ELSE:", "FOR EACH:"); // Keywords to ignore
 
-        for (String step : steps) {m
+        for (String step : steps) {
             // Check if step starts with a control keyword or an actor, skip if true
             boolean startsWithControlKeyword = controlKeywords.stream().anyMatch(step::startsWith);
             boolean startsWithActor = validPrefixes.stream().anyMatch(step::startsWith);
@@ -122,7 +122,11 @@ public class ScenarioQualityChecker {
             String currentPrefix = prefix.isEmpty() ? Integer.toString(stepNumber) : prefix + "." + stepNumber;
             formattedSteps.append(currentPrefix).append(". ").append(step).append("\n");
 
+            // Asumir que los subpasos se pasan como parte de la lista de pasos de alguna manera
+            // Aquí, eliminaremos el código que añade subpasos ficticios
+            // Solo incrementamos el número de paso si no es un subpaso
             stepNumber++;
         }
     }
 }
+
